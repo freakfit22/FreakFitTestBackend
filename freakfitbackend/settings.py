@@ -214,8 +214,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Environment variables
 SECRET_KEY = os.getenv("SECRET_KEY", "django-insecure-dev-key")
 DEBUG = os.getenv("DEBUG", "True") == "True"
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost 127.0.0.1", "freak-fit-test-backend.vercel.app").split()
-
+# ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost 127.0.0.1", "freak-fit-test-backend.vercel.app").split()
+ALLOWED_HOSTS = ['.vercel.app', 'localhost', '127.0.0.1']
 # Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
