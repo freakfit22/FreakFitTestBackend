@@ -17,7 +17,7 @@ import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-DATABASE_URL = "postgresql://postgres:sCnLpeGOjZpgfKtxOoxmBFuSdBTeBrbi@shortline.proxy.rlwy.net:38891/railway"
+DATABASE_URL = "postgresql://postgres:NzcLkIPdsSBsaUcMwDWZRidfCclLGZbm@postgres.railway.internal:5432/railway"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -103,34 +103,34 @@ WSGI_APPLICATION = 'freakfitbackend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / "db.sqlite3",  # Local SQLite file
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / "db.sqlite3",  # Local SQLite file
+#     }
+# }
+
+
+
+
+
+if DATABASE_URL:
+    DATABASES = {
+        'default': dj_database_url.parse(DATABASE_URL, conn_max_age=60)
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'railway',
+            'USER': 'postgres',
+            'PASSWORD': 'NzcLkIPdsSBsaUcMwDWZRidfCclLGZbm',
+            'HOST': 'postgres.railway.internal',
+            'PORT': '5432',
+            'CONN_MAX_AGE': 60,
+        }
+    }
 
-
-
-#
-#
-# if DATABASE_URL:
-#     DATABASES = {
-#         'default': dj_database_url.parse(DATABASE_URL, conn_max_age=60)
-#     }
-# else:
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.postgresql',
-#             'NAME': 'railway',
-#             'USER': 'postgres',
-#             'PASSWORD': 'sCnLpeGOjZpgfKtxOxxmBFuSdBTeBrbi',
-#             'HOST': 'postgres.railway.internal',
-#             'PORT': '5432',
-#             'CONN_MAX_AGE': 60,
-#         }
-#     }
-#
 
 
 
