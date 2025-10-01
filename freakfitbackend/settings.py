@@ -229,6 +229,13 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
 ]
 
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+        "LOCATION": "unique-snowflake",
+    }
+}
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -241,6 +248,9 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'freakfitbackend.urls'
+# ROOT_URLCONF = 'FreakFitTestBackend.urls'
+
+
 
 TEMPLATES = [
     {
@@ -331,3 +341,8 @@ AUTH_USER_MODEL = 'customers.Customer'
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+ACCOUNT_SID = os.getenv("ACCOUNT_SID")
+AUTH_TOKEN = os.getenv("AUTH_TOKEN")
+ZYLO_VERIFY_SERVICE_SID = os.getenv("FREAKFIT_ACCOUNT_SID")

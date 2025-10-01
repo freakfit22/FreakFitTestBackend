@@ -3,7 +3,7 @@ from django.db import models
 
 
 class Customer(AbstractUser):
-    phone_number = models.CharField(max_length=15, unique=True)
+    phone_number = models.CharField(max_length=15, unique=True, blank=True, null=True)
     address = models.TextField(blank=True, null=True)
 
     # Add related_name to avoid conflicts
