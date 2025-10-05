@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'customers',
     'whitenoise.runserver_nostatic',
+    'corsheaders',
 ]
 
 CACHES = {
@@ -46,10 +47,15 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'freakfitbackend.urls'
 # ROOT_URLCONF = 'FreakFitTestBackend.urls'
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",  # React dev server
+]
 
 
 
