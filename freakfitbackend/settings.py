@@ -54,6 +54,7 @@ ROOT_URLCONF = 'freakfitbackend.urls'
 # ROOT_URLCONF = 'FreakFitTestBackend.urls'
 
 CORS_ALLOWED_ORIGINS = [
+    "https://testfrontend-topaz.vercel.app",
     "http://localhost:5173",  # React dev server
 ]
 
